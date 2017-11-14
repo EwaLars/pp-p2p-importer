@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Settings>
+  <Accounts>
+    <Account>
+      <Platform>Mintos</Platform>
+      <Name>Mintos</Name>
+    </Account>
+    <Account>
+      <Platform>Viainvest</Platform>
+      <Name>ViaInvest</Name>
+    </Account>
+    <Account>
+      <Platform>Bondora</Platform>
+      <Name>Bondora</Name>
+    </Account>
+    <Account>
+      <Platform>Mintos</Platform>
+      <Name>test</Name>
+    </Account>
+  </Accounts>
+  <PortfolioPerformanceXmlFile>C:\Users\Lars\Desktop\temp\ohnenamen.xml</PortfolioPerformanceXmlFile>
+  <Platforms>
+    <Platform>
+      <Name>Mintos</Name>
+    </Platform>
+    <Platform>
+      <Name>Viainvest</Name>
+    </Platform>
+    <Platform>
+      <Name>Bondora</Name>
+    </Platform>
+  </Platforms>
+</Settings>
