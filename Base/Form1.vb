@@ -20,9 +20,6 @@ Public Class MainWindow
             Catch ex As Exception
                 Continue For
             End Try
-            If GV.AccountLIS.Contains(name) Then
-                nodeLIS.Add(node)
-            End If
         Next
 
 
@@ -50,7 +47,8 @@ Public Class MainWindow
         GV.SettingsXml.Load(GV.SettingsXmlPath)
         GV.ppXmlPath = GV.SettingsXml.DocumentElement.SelectSingleNode("/Settings/PortfolioPerformanceXmlFile").InnerText
         Dim nodes As XmlNodeList = GV.SettingsXml.DocumentElement.SelectNodes("/Settings/Accounts/Account")
-        GV.AccountLIS = nodes.Cast(Of XmlNode).Select(Function(x) x.SelectSingleNode("Name").InnerText).ToList
+        GV.AccountLIS = nodes.Cast(Of XmlNode).Select(Function(x) New PlatformAccounts With {.Name = x.SelectSingleNode("Name").InnerText,
+                                                                                             .Plattform = CType(x.SelectSingleNode("Platform").InnerText.ToLower, P2pPlatfrom)}).ToList
         Fkt.SetPpFileStatus(GV.ppXmlPath)
         GV.ppXml.Load(GV.ppXmlPath)
     End Sub

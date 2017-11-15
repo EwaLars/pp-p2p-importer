@@ -19,15 +19,4 @@
     </Account>
   </Accounts>
   <PortfolioPerformanceXmlFile>C:\Users\Lars\Desktop\temp\ohnenamen.xml</PortfolioPerformanceXmlFile>
-  <Platforms>
-    <Platform>
-      <Name>Mintos</Name>
-    </Platform>
-    <Platform>
-      <Name>Viainvest</Name>
-    </Platform>
-    <Platform>
-      <Name>Bondora</Name>
-    </Platform>
-  </Platforms>
 </Settings>
