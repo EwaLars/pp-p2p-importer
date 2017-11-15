@@ -1,5 +1,7 @@
 ﻿
+#Region " Imports "
 Imports System.Xml
+#End Region
 
 Public Class SettingsWindow
 
@@ -57,6 +59,9 @@ Public Class SettingsWindow
             GV.SettingsXml.Save(GV.SettingsXmlPath)
             '>>> Set status-label of main window
             Fkt.SetPpFileStatus(GV.ppXmlPath)
+
+            GV.ppXml = New XmlDocument
+            GV.ppXml.Load(GV.ppXmlPath)
         End If
     End Sub
 #End Region

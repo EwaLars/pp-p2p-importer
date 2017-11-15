@@ -5,7 +5,13 @@ Public Class GV
     Public Shared SettingsXml As New XmlDocument
     Public Shared SettingsXmlPath As String
 
+    Public Shared ppXml As New XmlDocument
     Public Shared ppXmlPath As String
 
     Public Shared FRM As MainWindow
 End Class
+
+Public Enum TransactionType
+    DEPOSIT
+    INTEREST
+End Enum

@@ -1,6 +1,8 @@
 ﻿
+#Region " Imports "
 Imports System.Xml
 Imports Microsoft.VisualBasic
+#End Region
 
 Public Class MainWindow
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -24,36 +26,7 @@ Public Class MainWindow
         Next
 
 
-        If nodeLIS.Count > 0 Then
 
-
-            Dim accountTransactionNode As XmlNode = pp.CreateElement("account-transaction")
-
-            Dim dateNode As XmlNode = pp.CreateElement("date")
-            dateNode.InnerText = "2017-11-14"
-            Dim currencyCodeNode As XmlNode = pp.CreateElement("currencyCode")
-            currencyCodeNode.InnerText = "EUR"
-            Dim amountNode As XmlNode = pp.CreateElement("amount")
-            amountNode.InnerText = "50"
-            Dim sharesNode As XmlNode = pp.CreateElement("shares")
-            sharesNode.InnerText = "0"
-            Dim noteNode As XmlNode = pp.CreateElement("note")
-            noteNode.InnerText = "Importer"
-            Dim typeNode As XmlNode = pp.CreateElement("type")
-            typeNode.InnerText = "DEPOSIT"
-
-
-
-            accountTransactionNode.AppendChild(dateNode)
-            accountTransactionNode.AppendChild(currencyCodeNode)
-            accountTransactionNode.AppendChild(amountNode)
-            accountTransactionNode.AppendChild(sharesNode)
-            accountTransactionNode.AppendChild(noteNode)
-            accountTransactionNode.AppendChild(typeNode)
-
-
-            nodeLIS(0).SelectSingleNode("transactions").AppendChild(accountTransactionNode)
-        End If
 
         pp.Save(GV.ppXmlPath)
 
@@ -79,6 +52,7 @@ Public Class MainWindow
         Dim nodes As XmlNodeList = GV.SettingsXml.DocumentElement.SelectNodes("/Settings/Accounts/Account")
         GV.AccountLIS = nodes.Cast(Of XmlNode).Select(Function(x) x.SelectSingleNode("Name").InnerText).ToList
         Fkt.SetPpFileStatus(GV.ppXmlPath)
+        GV.ppXml.Load(GV.ppXmlPath)
     End Sub
 
 #End Region
