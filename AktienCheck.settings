@@ -1,0 +1,14 @@
+#Fri Nov 17 12:50:50 CET 2017
+AccountListView@top2=0\=150;1\=80;currency\=60;note\=22;
+name.abuchen.portfolio.ui.views.SecuritiesTable$picked=bdfec0aa-a9d3-4fbc-84d8-9bd7ec17b6aa
+PortfolioPart-newsash=180
+PortfolioListView-newsash=250
+AccountListView@bottom5=0\=1024$80;1\=100;2\=80;3\=80;4\=250;5\=80;6\=80;7\=120;8\=200;
+PortfolioTransactionsViewer3=0\=1024$80;1\=80;2\=250;3\=80;4\=80;5\=80;6\=80;7\=80;8\=80;9\=120;10\=200;
+SecurityListView@transactions3=0\=128$80;1\=80;2\=80;3\=80;4\=80;5\=120;6\=120;note\=22;
+name.abuchen.portfolio.ui.views.StatementOfAssetsViewer$picked=301633e3-f4e0-4ea6-abc6-f3cb2c43d528
+SecurityListView@events=0\=128$80;1\=80;2\=80;
+SecurityListView-newsash=250
+PortfolioListView@top2=0\=100;1\=160;note\=22;
+SecurityListView@prices=0\=128$80;1\=80;
+AccountListView-newsash=250
