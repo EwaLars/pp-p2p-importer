@@ -72,15 +72,23 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fkt.vb" />
-    <Compile Include="Form1.vb">
+    <Compile Include="Processors\Bondora.vb" />
+    <Compile Include="Controls\FileSelectUC.Designer.vb">
+      <DependentUpon>FileSelectUC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FileSelectUC.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Classes\Fkt.vb" />
+    <Compile Include="Forms\MainWindow.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="Forms\MainWindow.Designer.vb">
+      <DependentUpon>MainWindow.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GV.vb" />
+    <Compile Include="Classes\GV.vb" />
+    <Compile Include="Processors\Mintos.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -96,16 +104,21 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SettingsWindow.Designer.vb">
+    <Compile Include="Processors\P2pProcessor.vb" />
+    <Compile Include="Forms\SettingsWindow.Designer.vb">
       <DependentUpon>SettingsWindow.vb</DependentUpon>
     </Compile>
-    <Compile Include="SettingsWindow.vb">
+    <Compile Include="Forms\SettingsWindow.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Processors\Viainvest.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="Controls\FileSelectUC.resx">
+      <DependentUpon>FileSelectUC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainWindow.resx">
+      <DependentUpon>MainWindow.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -113,7 +126,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingsWindow.resx">
+    <EmbeddedResource Include="Forms\SettingsWindow.resx">
       <DependentUpon>SettingsWindow.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
