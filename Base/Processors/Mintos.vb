@@ -4,10 +4,13 @@ Imports Base
 #End Region
 
 Public Class Mintos
-    Implements P2pProcessor
+    Implements IP2pProcessor
+
+#Region " Porperties "
+    Private Property ImportDT As DataTable Implements IP2pProcessor.ImportDT
+#End Region
 
 #Region " Declarations "
-    Private importDT As DataTable
     Private FilePath As String
 #End Region
 
@@ -19,13 +22,13 @@ Public Class Mintos
 #End Region
 
 #Region " Private Sub ReadFile "
-    Private Sub ReadFile() Implements P2pProcessor.ReadFile
+    Private Sub ReadFile() Implements IP2pProcessor.ReadFile
 
     End Sub
 #End Region
 
 #Region " Public Sub Process "
-    Public Sub Process() Implements P2pProcessor.Process
+    Public Sub Process() Implements IP2pProcessor.Process
 
     End Sub
 #End Region

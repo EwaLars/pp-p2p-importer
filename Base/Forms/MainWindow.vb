@@ -28,7 +28,7 @@ Public Class MainWindow
                 Dim tmpUC As FileSelectUC = CType(ctrl, FileSelectUC)
                 If tmpUC.Path <> "" Then
                     saveFLAG = True
-                    Dim tmpProcessor As P2pProcessor = Nothing
+                    Dim tmpProcessor As IP2pProcessor = Nothing
                     Select Case tmpUC.Account.Plattform
                         Case P2pPlatfrom.bondora
                             tmpProcessor = New Bondora(tmpUC.Path)
