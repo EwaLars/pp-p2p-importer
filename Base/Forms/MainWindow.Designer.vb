@@ -22,9 +22,11 @@ Partial Class MainWindow
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainWindow))
         Me.ButtonProcess = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.PathToXml = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.StripStatusLabelVersion = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ButtonClose = New System.Windows.Forms.Button()
         Me.MainPanel = New System.Windows.Forms.Panel()
         Me.LabelNoAccount = New System.Windows.Forms.Label()
@@ -32,7 +34,6 @@ Partial Class MainWindow
         Me.ButtonFairrCSV = New System.Windows.Forms.ToolStripButton()
         Me.ButtonSettings = New System.Windows.Forms.ToolStripButton()
         Me.ButtonExit = New System.Windows.Forms.ToolStripButton()
-        Me.StripStatusLabelVersion = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusStrip1.SuspendLayout()
         Me.MainPanel.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -51,7 +52,7 @@ Partial Class MainWindow
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PathToXml, Me.StripStatusLabelVersion})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 174)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 178)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(541, 24)
         Me.StatusStrip1.SizingGrip = False
@@ -69,6 +70,16 @@ Partial Class MainWindow
         Me.PathToXml.Size = New System.Drawing.Size(169, 19)
         Me.PathToXml.Text = "PathToXML"
         Me.PathToXml.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'StripStatusLabelVersion
+        '
+        Me.StripStatusLabelVersion.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
+            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
+            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+        Me.StripStatusLabelVersion.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner
+        Me.StripStatusLabelVersion.Name = "StripStatusLabelVersion"
+        Me.StripStatusLabelVersion.Size = New System.Drawing.Size(89, 19)
+        Me.StripStatusLabelVersion.Text = "v 1.0.1234.1234"
         '
         'ButtonClose
         '
@@ -89,7 +100,7 @@ Partial Class MainWindow
         Me.MainPanel.Controls.Add(Me.LabelNoAccount)
         Me.MainPanel.Location = New System.Drawing.Point(12, 43)
         Me.MainPanel.Name = "MainPanel"
-        Me.MainPanel.Size = New System.Drawing.Size(517, 101)
+        Me.MainPanel.Size = New System.Drawing.Size(517, 105)
         Me.MainPanel.TabIndex = 3
         '
         'LabelNoAccount
@@ -100,7 +111,7 @@ Partial Class MainWindow
         Me.LabelNoAccount.ForeColor = System.Drawing.SystemColors.ControlDark
         Me.LabelNoAccount.Location = New System.Drawing.Point(0, 0)
         Me.LabelNoAccount.Name = "LabelNoAccount"
-        Me.LabelNoAccount.Size = New System.Drawing.Size(517, 101)
+        Me.LabelNoAccount.Size = New System.Drawing.Size(517, 105)
         Me.LabelNoAccount.TabIndex = 0
         Me.LabelNoAccount.Text = "No account configured" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Plaese configure accounts"
         Me.LabelNoAccount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -148,30 +159,21 @@ Partial Class MainWindow
         Me.ButtonExit.Size = New System.Drawing.Size(59, 37)
         Me.ButtonExit.Text = "Exit"
         '
-        'StripStatusLabelVersion
-        '
-        Me.StripStatusLabelVersion.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
-            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
-            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
-        Me.StripStatusLabelVersion.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner
-        Me.StripStatusLabelVersion.Name = "StripStatusLabelVersion"
-        Me.StripStatusLabelVersion.Size = New System.Drawing.Size(89, 19)
-        Me.StripStatusLabelVersion.Text = "v 1.0.1234.1234"
-        '
         'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(541, 198)
+        Me.ClientSize = New System.Drawing.Size(541, 202)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.MainPanel)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.ButtonClose)
         Me.Controls.Add(Me.ButtonProcess)
-        Me.MaximumSize = New System.Drawing.Size(557, 436)
-        Me.MinimumSize = New System.Drawing.Size(557, 186)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximumSize = New System.Drawing.Size(557, 440)
+        Me.MinimumSize = New System.Drawing.Size(557, 190)
         Me.Name = "MainWindow"
-        Me.Text = "MainWindow"
+        Me.Text = "PPI - Portfolio Performance Importer"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.MainPanel.ResumeLayout(False)

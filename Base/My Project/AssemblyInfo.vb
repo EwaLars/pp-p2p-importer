@@ -1,4 +1,5 @@
-﻿Imports System
+﻿Imports System.Resources
+Imports System
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
@@ -8,10 +9,10 @@ Imports System.Runtime.InteropServices
 
 ' Werte der Assemblyattribute überprüfen
 
-<Assembly: AssemblyTitle("Base")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("Base")>
+<Assembly: AssemblyTitle("PPI - Portfolio Performance Importer")>
+<Assembly: AssemblyDescription("Tool to import account statements from various p2p loan platforms and other sources into portfolio performance")>
+<Assembly: AssemblyCompany("KempaSoft Gbr")>
+<Assembly: AssemblyProduct("PPI")>
 <Assembly: AssemblyCopyright("Copyright ©  2017")>
 <Assembly: AssemblyTrademark("")>
 
@@ -32,3 +33,4 @@ Imports System.Runtime.InteropServices
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
 <Assembly: AssemblyVersion("1.0.*")>
+<Assembly: NeutralResourcesLanguage("en")>
