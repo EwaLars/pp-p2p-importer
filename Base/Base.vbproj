@@ -72,6 +72,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\DateSelectWindow.Designer.vb">
+      <DependentUpon>DateSelectWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DateSelectWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Processors\Bondora.vb" />
     <Compile Include="Controls\FileSelectUC.Designer.vb">
       <DependentUpon>FileSelectUC.vb</DependentUpon>
@@ -88,6 +94,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Classes\GV.vb" />
+    <Compile Include="Processors\Fairr.vb" />
     <Compile Include="Processors\Mintos.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -117,6 +124,9 @@
     <EmbeddedResource Include="Controls\FileSelectUC.resx">
       <DependentUpon>FileSelectUC.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DateSelectWindow.resx">
+      <DependentUpon>DateSelectWindow.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainWindow.resx">
       <DependentUpon>MainWindow.vb</DependentUpon>
     </EmbeddedResource>
@@ -144,7 +154,31 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Logo_fairr.de_noclaim_CMYK.png" />
+    <None Include="Resources\Logo_fairr.de_noclaim_CMYK_small.png" />
+    <None Include="Resources\Logo_fairr.de_CMYK.png" />
+    <None Include="Resources\Settings.png" />
+    <None Include="Resources\Exit.png" />
     <Content Include="Settings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

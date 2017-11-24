@@ -23,9 +23,9 @@ End Enum
 
 #Region " Public Enum P2pPlatfrom "
 Public Enum P2pPlatfrom
-    mintos
-    bondora
-    viainvest
+    Mintos
+    Bondora
+    Viainvest
 End Enum
 #End Region
 
