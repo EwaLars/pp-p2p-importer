@@ -11,12 +11,12 @@
     </Account>
     <Account>
       <Platform>Bondora</Platform>
-      <Name>Bondora</Name>
+      <Name>Bondora2</Name>
     </Account>
     <Account>
       <Platform>Mintos</Platform>
       <Name>test</Name>
     </Account>
   </Accounts>
-  <PortfolioPerformanceXmlFile>C:\Users\Lars\Desktop\temp\ohnenamen.xml</PortfolioPerformanceXmlFile>
+  <PortfolioPerformanceXmlFile>E:\Dropbox\Portfolio-Performance\SaraLarsPortfolio.xml</PortfolioPerformanceXmlFile>
 </Settings>

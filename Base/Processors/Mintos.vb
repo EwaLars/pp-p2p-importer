@@ -23,7 +23,7 @@ Public Class Mintos
 
 #Region " Private Sub ReadFile "
     Private Sub ReadFile() Implements IP2pProcessor.ReadFile
-
+        Me.ImportDT = Fkt.ReadXlsxToDatatable(Me.FilePath)
     End Sub
 #End Region
 

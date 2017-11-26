@@ -33,8 +33,8 @@ Public Class MainWindow
                     saveFLAG = True
                     Dim tmpProcessor As IP2pProcessor = Nothing
                     Select Case tmpUC.Account.Plattform
-                        Case P2pPlatfrom.bondora
-                            tmpProcessor = New Bondora(tmpUC.Path)
+                        Case P2pPlatfrom.Bondora
+                            tmpProcessor = New Bondora(tmpUC.Path, tmpUC.Account.Name)
                         Case P2pPlatfrom.mintos
                             tmpProcessor = New Mintos(tmpUC.Path)
                         Case P2pPlatfrom.viainvest
@@ -46,6 +46,7 @@ Public Class MainWindow
         Next
         '>>> Save the formated XML file
         If saveFLAG Then GV.ppXml.Save(GV.ppXmlPath)
+        MsgBox("Sucessfully imported", MsgBoxStyle.Information)
     End Sub
 #End Region
 
@@ -64,6 +65,12 @@ Public Class MainWindow
 
 #Region " Private Sub ButtonFairrCSV_Click () "
     Private Sub ButtonFairrCSV_Click(sender As Object, e As EventArgs) Handles ButtonFairrCSV.Click
+        '>>> Check if Access Runtime 2013 is installed
+        If Microsoft.Win32.Registry.ClassesRoot.OpenSubKey("Microsoft.ACE.OLEDB.15.0") Is Nothing Then
+            MsgBox("Microsoft Access Runtime 2016 is not installed!", MsgBoxStyle.Critical)
+            Exit Sub
+        End If
+        '>>> Open XLS File
         Dim tmpOpen As New OpenFileDialog
         tmpOpen.Filter = "Excel|*.xlsx;*.xls|CSV|*.csv|All files|*.*"
         If tmpOpen.ShowDialog = DialogResult.OK Then

@@ -1,6 +1,7 @@
 ﻿
 #Region " Imports "
 Imports System.Xml
+Imports ClosedXML.Excel
 #End Region
 
 Public Class Fkt
@@ -19,7 +20,7 @@ Public Class Fkt
         Dim currencyCodeNode As XmlNode = GV.ppXml.CreateElement("currencyCode")
         currencyCodeNode.InnerText = Currency.ToUpper
         Dim amountNode As XmlNode = GV.ppXml.CreateElement("amount")
-        amountNode.InnerText = (Amount * 10).ToString
+        amountNode.InnerText = CInt(Amount * 100).ToString
         Dim sharesNode As XmlNode = GV.ppXml.CreateElement("shares")
         sharesNode.InnerText = "0"
         Dim noteNode As XmlNode = GV.ppXml.CreateElement("note")
@@ -48,6 +49,52 @@ Public Class Fkt
         array(0) = Char.ToUpper(array(0))
         '>>> Return new string.
         Return New String(array)
+    End Function
+#End Region
+
+#Region " Public Shared Function ReadXlsxToDatatable () "
+    Public Shared Function ReadXlsxToDatatable(XlsxFilePath As String) As DataTable
+        Dim dt As New DataTable
+        'Open the Excel file using ClosedXML.
+        Using workBook As New XLWorkbook(XlsxFilePath)
+            'Read the first Sheet from Excel file.
+            Dim workSheet As IXLWorksheet = workBook.Worksheet(1)
+            'Loop through the Worksheet rows.
+            Dim firstRow As Boolean = True
+            For Each row As IXLRow In workSheet.Rows()
+                'Use the first row to add columns to DataTable.
+                If firstRow Then
+                    For Each cell As IXLCell In row.Cells()
+                        dt.Columns.Add(cell.Value.ToString())
+                    Next
+                    firstRow = False
+                Else
+                    'Add rows to DataTable.
+                    dt.Rows.Add()
+                    Dim i As Integer = 0
+                    For Each cell As IXLCell In row.Cells()
+                        dt.Rows(dt.Rows.Count - 1)(i) = cell.Value.ToString()
+                        i += 1
+                    Next
+                End If
+            Next
+        End Using
+        Return dt
+    End Function
+#End Region
+
+#Region " Public Shared Function FindXmlNodeByAccountName () "
+    Public Shared Function FindXmlNodeByAccountName(AccountName As String) As XmlNode
+        Dim accountNodes = GV.ppXml.SelectNodes("/client/accounts/account")
+        Dim returnNode As XmlNode = Nothing
+        For Each node As XmlNode In accountNodes
+            Dim nameNode = node.SelectSingleNode("name")
+            If nameNode IsNot Nothing AndAlso nameNode.InnerText.ToLower = AccountName.ToLower Then
+                returnNode = node.SelectSingleNode("transactions")
+                Exit For
+            End If
+        Next
+        Return returnNode
     End Function
 #End Region
 
