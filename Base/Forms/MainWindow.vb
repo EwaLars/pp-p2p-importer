@@ -59,7 +59,11 @@ Public Class MainWindow
 #Region " Private Sub ButtonSettings_Click "
     Private Sub ButtonSettings_Click(sender As Object, e As EventArgs) Handles ButtonSettings.Click
         Dim settings As New SettingsWindow
-        settings.ShowDialog()
+        If settings.ShowDialog() = DialogResult.OK Then
+            Me.MainPanel.Controls.Clear()
+            GC.Collect()
+            LoadPanel()
+        End If
     End Sub
 #End Region
 
@@ -95,7 +99,6 @@ Public Class MainWindow
         Try
             GV.AccountLIS = nodes.Cast(Of XmlNode).Select(Function(x) New PlatformAccounts With {.Name = x.SelectSingleNode("Name").InnerText,
                                                                                              .Plattform = DirectCast([Enum].Parse(GetType(P2pPlatfrom), x.SelectSingleNode("Platform").InnerText), P2pPlatfrom)}).ToList
-
         Catch ex As Exception
             Throw ex
         End Try

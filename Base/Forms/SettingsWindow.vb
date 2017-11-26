@@ -18,6 +18,8 @@ Public Class SettingsWindow
     Private Sub ButtonOk_Click(sender As Object, e As EventArgs) Handles ButtonOk.Click
         '>>> Handle the change of the PP-Config File
         HandleXmlFileChanges()
+        '>>> Handle the change of the P2P-Accounts
+        HandlePlatformAccountChanges()
         '>>> Close Window
         Me.DialogResult = DialogResult.OK
     End Sub
@@ -94,13 +96,19 @@ Public Class SettingsWindow
         accountsNode.RemoveAll()
         '>>> Add new accounts
         For Each row As DataGridViewRow In Me.AccountsDGV.Rows
-            Dim tmpP2p As New PlatformAccounts With {.Name = row.Cells(Me.AccountName.Name).Value.ToString,
-                                                     .Plattform = CType(row.Cells(Me.AccountP2pPlatform.Name).Value.ToString.ToLower, P2pPlatfrom)}
+            '>>> skip last row
+            If row.Index = Me.AccountsDGV.RowCount - 1 Then Continue For
+            Dim accountName As String = row.Cells(Me.AccountName.Name).Value.ToString
+            Dim platform As P2pPlatfrom
+            If [Enum].TryParse(Of P2pPlatfrom)(Fkt.UppercaseFirstLetter(row.Cells(Me.AccountP2pPlatform.Name).Value.ToString), platform) = False Then
+                Continue For
+            End If
+            Dim tmpP2p As New PlatformAccounts With {.Name = accountName, .Plattform = platform}
             '>>> Generate new account node
             Dim singleAccountNode As XmlNode = GV.SettingsXml.CreateElement("Account")
             '>>> Add new platform node under the new created account node
             Dim platformNode As XmlNode = GV.SettingsXml.CreateElement("Platform")
-            platformNode.InnerText = tmpP2p.Plattform.ToString.ToLower
+            platformNode.InnerText = tmpP2p.Plattform.ToString
             singleAccountNode.AppendChild(platformNode)
             '>>> Add new name node under the new created account node
             Dim nameNode As XmlNode = GV.SettingsXml.CreateElement("Name")

@@ -43,10 +43,6 @@ Public Class Mintos
 
 #Region " Public Sub Process "
     Public Sub Process() Implements IP2pProcessor.Process
-
-
-
-
         Dim accountNode As XmlNode = Fkt.FindXmlNodeByAccountName(Me.AccountName)
         '>>> Build hashlist
         Dim hashLIS As New List(Of Long)
@@ -79,10 +75,6 @@ Public Class Mintos
                 End If
             End If
         Next
-
-
-
-
     End Sub
 #End Region
 

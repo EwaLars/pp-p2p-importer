@@ -3,7 +3,7 @@
   <Accounts>
     <Account>
       <Platform>Mintos</Platform>
-      <Name>Mintos2</Name>
+      <Name>Mintos</Name>
     </Account>
     <Account>
       <Platform>Viainvest</Platform>
@@ -11,7 +11,7 @@
     </Account>
     <Account>
       <Platform>Bondora</Platform>
-      <Name>Bondora2</Name>
+      <Name>Bondora</Name>
     </Account>
     <Account>
       <Platform>Mintos</Platform>
