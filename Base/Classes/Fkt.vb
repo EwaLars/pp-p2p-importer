@@ -13,18 +13,18 @@ Public Class Fkt
 #End Region
 
 #Region " Public Shared Sub InsertTransaction "
-    Public Shared Sub InsertTransaction(TransactionsNode As XmlNode, TransactionDate As Date, Currency As String, Amount As Decimal, Type As TransactionType)
+    Public Shared Sub InsertTransaction(TransactionsNode As XmlNode, TransactionDate As Date, Currency As String, Amount As Decimal, Type As TransactionType, NoteHash As Long)
         Dim accountTransactionNode As XmlNode = GV.ppXml.CreateElement("account-transaction")
         Dim dateNode As XmlNode = GV.ppXml.CreateElement("date")
         dateNode.InnerText = TransactionDate.ToString("yyyy-MM-dd") '"2017-11-14"
         Dim currencyCodeNode As XmlNode = GV.ppXml.CreateElement("currencyCode")
         currencyCodeNode.InnerText = Currency.ToUpper
         Dim amountNode As XmlNode = GV.ppXml.CreateElement("amount")
-        amountNode.InnerText = CInt(Amount * 100).ToString
+        amountNode.InnerText = CInt(Math.Round(Amount * 100, 0, MidpointRounding.AwayFromZero)).ToString
         Dim sharesNode As XmlNode = GV.ppXml.CreateElement("shares")
         sharesNode.InnerText = "0"
         Dim noteNode As XmlNode = GV.ppXml.CreateElement("note")
-        noteNode.InnerText = "Importer"
+        noteNode.InnerText = NoteHash.ToString
         Dim typeNode As XmlNode = GV.ppXml.CreateElement("type")
         typeNode.InnerText = Type.ToString
         accountTransactionNode.AppendChild(dateNode)
@@ -71,10 +71,8 @@ Public Class Fkt
                 Else
                     'Add rows to DataTable.
                     dt.Rows.Add()
-                    Dim i As Integer = 0
                     For Each cell As IXLCell In row.Cells()
-                        dt.Rows(dt.Rows.Count - 1)(i) = cell.Value.ToString()
-                        i += 1
+                        dt.Rows(dt.Rows.Count - 1)(cell.Address.ColumnNumber - 1) = cell.Value.ToString()
                     Next
                 End If
             Next
@@ -95,6 +93,19 @@ Public Class Fkt
             End If
         Next
         Return returnNode
+    End Function
+#End Region
+
+#Region " Public Shared Function CreateNoteHash () "
+    Public Shared Function CreateNoteHash(TransferDate As Date, Currency As String, Amount As Decimal, Type As TransactionType, Balance As Decimal) As Long
+        Const prime As Integer = 31
+        Dim resultHash As Long = 1
+        resultHash = resultHash * prime + TransferDate.GetHashCode
+        resultHash = resultHash * prime + Currency.GetHashCode
+        resultHash = resultHash * prime + Amount.GetHashCode
+        resultHash = resultHash * prime + Type.ToString.GetHashCode
+        resultHash = resultHash * prime + Balance.ToString.GetHashCode
+        Return resultHash
     End Function
 #End Region
 

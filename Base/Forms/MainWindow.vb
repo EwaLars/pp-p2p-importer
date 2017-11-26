@@ -35,8 +35,8 @@ Public Class MainWindow
                     Select Case tmpUC.Account.Plattform
                         Case P2pPlatfrom.Bondora
                             tmpProcessor = New Bondora(tmpUC.Path, tmpUC.Account.Name)
-                        Case P2pPlatfrom.mintos
-                            tmpProcessor = New Mintos(tmpUC.Path)
+                        Case P2pPlatfrom.Mintos
+                            tmpProcessor = New Mintos(tmpUC.Path, tmpUC.Account.Name)
                         Case P2pPlatfrom.viainvest
                             tmpProcessor = New Viainvest(tmpUC.Path)
                     End Select
