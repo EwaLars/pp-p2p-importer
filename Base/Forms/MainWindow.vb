@@ -94,7 +94,7 @@ Public Class MainWindow
 #Region " Private Sub: GetSettings () "
     Private Sub GetSettings()
         GV.FRM = Me
-        GV.SettingsXmlPath = My.Application.Info.DirectoryPath & "\..\..\Settings.xml"
+        GV.SettingsXmlPath = My.Application.Info.DirectoryPath & "\Settings.xml"
         If File.Exists(GV.SettingsXmlPath) Then
             GV.SettingsXml.Load(GV.SettingsXmlPath)
             GV.ppXmlPath = GV.SettingsXml.DocumentElement.SelectSingleNode("/Settings/PortfolioPerformanceXmlFile").InnerText
@@ -109,6 +109,41 @@ Public Class MainWindow
             If File.Exists(GV.ppXmlPath) Then
                 GV.ppXml.Load(GV.ppXmlPath)
             End If
+        Else
+            '>>> Create new settings file
+
+            Dim XmlDoc As New XmlDocument
+
+            'Write down the XML declaration
+            Dim XmlDeclaration As XmlDeclaration = XmlDoc.CreateXmlDeclaration("1.0", "UTF-8", Nothing)
+
+            'Create the root element
+            Dim RootNode As XmlElement = XmlDoc.CreateElement("Settings")
+            XmlDoc.InsertBefore(XmlDeclaration, XmlDoc.DocumentElement)
+            XmlDoc.AppendChild(RootNode)
+
+            'Create a new <Category> element and add it to the root node
+
+            Dim accountsNode As XmlNode = XmlDoc.CreateNode(XmlNodeType.Element, "Accounts", Nothing)
+            RootNode.AppendChild(accountsNode)
+
+
+            'Create a new <Category> element and add it to the root node
+            Dim portfolioPerformanceXmlFileNode As XmlElement = XmlDoc.CreateElement("PortfolioPerformanceXmlFile")
+            RootNode.AppendChild(portfolioPerformanceXmlFileNode)
+
+
+            'Save to the XML file
+            XmlDoc.Save("Settings.xml")
+
+            GV.SettingsXmlPath = My.Application.Info.DirectoryPath & "\Settings.xml"
+
+            GV.SettingsXml.Load(GV.SettingsXmlPath)
+
+
+
+
+
         End If
     End Sub
 #End Region
