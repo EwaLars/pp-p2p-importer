@@ -1,5 +1,6 @@
 ﻿
 #Region " Imports "
+Imports System.Data.OleDb
 Imports System.Xml
 Imports ClosedXML.Excel
 #End Region
@@ -81,6 +82,24 @@ Public Class Fkt
     End Function
 #End Region
 
+#Region " Public Shared Function ReadXlsToDatatable () "
+    Public Shared Function ReadXlsToDatatable(FilePath As String, SheetName As String) As DataTable
+        '>>> Check if Access Runtime 2013 is installed
+        If Microsoft.Win32.Registry.ClassesRoot.OpenSubKey("Microsoft.ACE.OLEDB.15.0") Is Nothing Then
+            MsgBox("Microsoft Access Runtime 2016 is not installed!", MsgBoxStyle.Critical)
+            Return Nothing
+        End If
+        Dim myConnection = $"Provider=Microsoft.ACE.OLEDB.15.0;Data Source={FilePath};Extended Properties=""Excel 12.0 Xml;HDR=YES"""
+        Dim conn = New OleDbConnection(myConnection)
+        Dim strSQL = $"SELECT * FROM [{SheetName}]"
+        Dim cmd = New OleDbCommand(strSQL, conn)
+        Dim DataSet = New DataSet()
+        Dim adapter = New OleDbDataAdapter(cmd)
+        adapter.Fill(DataSet)
+        Return DataSet.Tables(0)
+    End Function
+#End Region
+
 #Region " Public Shared Function FindXmlNodeByAccountName () "
     Public Shared Function FindXmlNodeByAccountName(AccountName As String) As XmlNode
         Dim accountNodes = GV.ppXml.SelectNodes("/client/accounts/account")
@@ -97,7 +116,7 @@ Public Class Fkt
 #End Region
 
 #Region " Public Shared Function CreateNoteHash () "
-    Public Shared Function CreateNoteHash(TransferDate As Date, Currency As String, Amount As Decimal, Type As TransactionType, Balance As Decimal) As Long
+    Public Shared Function CreateNoteHash(TransferDate As Date, Currency As String, Amount As Decimal, Type As TransactionType, Optional Balance As Decimal = 0, Optional LoanID As String = "") As Long
         Const prime As Integer = 31
         Dim resultHash As Long = 1
         resultHash = resultHash * prime + TransferDate.GetHashCode
@@ -105,6 +124,7 @@ Public Class Fkt
         resultHash = resultHash * prime + Amount.GetHashCode
         resultHash = resultHash * prime + Type.ToString.GetHashCode
         resultHash = resultHash * prime + Balance.ToString.GetHashCode
+        resultHash = resultHash * prime + LoanID.GetHashCode
         Return resultHash
     End Function
 #End Region

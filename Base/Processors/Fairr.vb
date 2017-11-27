@@ -42,22 +42,17 @@ Public Class Fairr
 
 #Region " Private Sub ReadFile "
     Private Sub ReadFile() Implements IP2pProcessor.ReadFile
-        Dim myConnection = $"Provider=Microsoft.ACE.OLEDB.15.0;Data Source={Me.FilePath};Extended Properties=""Excel 12.0 Xml;HDR=YES"""
-        Dim conn = New OleDbConnection(myConnection)
-        Dim strSQL = "SELECT * FROM [Umsätze$]"
-        Dim cmd = New OleDbCommand(strSQL, conn)
-        Dim DataSet = New DataSet()
-        Dim adapter = New OleDbDataAdapter(cmd)
-        adapter.Fill(DataSet)
-        Me.ImportDT = DataSet.Tables(0)
+        Me.ImportDT = Fkt.ReadXlsToDatatable(Me.FilePath, "Umsätze$")
     End Sub
 #End Region
 
 #Region " Public Sub Process "
     Public Sub Process() Implements IP2pProcessor.Process
+        '>>> Exit if datatalbe is nothing
+        If Me.ImportDT Is Nothing Then Exit Sub
+        '>>> Start conversion
         Dim requestDateLimitation As New DateSelectWindow
         If requestDateLimitation.ShowDialog = DialogResult.OK Then
-
             '>>> Remove first 6 rows
             For i = 1 To 6
                 Me.ImportDT.Rows.Remove(Me.ImportDT.Rows(0))

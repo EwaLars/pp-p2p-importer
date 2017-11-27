@@ -38,8 +38,8 @@ Public Class MainWindow
                             tmpProcessor = New Bondora(tmpUC.Path, tmpUC.Account.Name)
                         Case P2pPlatfrom.Mintos
                             tmpProcessor = New Mintos(tmpUC.Path, tmpUC.Account.Name)
-                        Case P2pPlatfrom.viainvest
-                            tmpProcessor = New Viainvest(tmpUC.Path)
+                        Case P2pPlatfrom.Viainvest
+                            tmpProcessor = New Viainvest(tmpUC.Path, tmpUC.Account.Name)
                     End Select
                     tmpProcessor.Process()
                 End If
@@ -63,6 +63,7 @@ Public Class MainWindow
         If settings.ShowDialog() = DialogResult.OK Then
             GetSettings()
             Me.MainPanel.Controls.Clear()
+            Me.LabelNoAccount.Parent = Me.MainPanel
             GC.Collect()
             LoadPanel()
         End If
@@ -71,17 +72,11 @@ Public Class MainWindow
 
 #Region " Private Sub ButtonFairrCSV_Click () "
     Private Sub ButtonFairrCSV_Click(sender As Object, e As EventArgs) Handles ButtonFairrCSV.Click
-        '>>> Check if Access Runtime 2013 is installed
-        If Microsoft.Win32.Registry.ClassesRoot.OpenSubKey("Microsoft.ACE.OLEDB.15.0") Is Nothing Then
-            MsgBox("Microsoft Access Runtime 2016 is not installed!", MsgBoxStyle.Critical)
-            Exit Sub
-        End If
         '>>> Open XLS File
         Dim tmpOpen As New OpenFileDialog
         tmpOpen.Filter = "Excel|*.xlsx;*.xls|CSV|*.csv|All files|*.*"
         If tmpOpen.ShowDialog = DialogResult.OK Then
             Dim tmpFairr As New Fairr(tmpOpen.FileName)
-
             tmpFairr.Process()
         End If
     End Sub
@@ -111,39 +106,23 @@ Public Class MainWindow
             End If
         Else
             '>>> Create new settings file
-
             Dim XmlDoc As New XmlDocument
-
-            'Write down the XML declaration
+            '>>> Write the XML declaration
             Dim XmlDeclaration As XmlDeclaration = XmlDoc.CreateXmlDeclaration("1.0", "UTF-8", Nothing)
-
-            'Create the root element
+            '>>> Create the root element
             Dim RootNode As XmlElement = XmlDoc.CreateElement("Settings")
             XmlDoc.InsertBefore(XmlDeclaration, XmlDoc.DocumentElement)
             XmlDoc.AppendChild(RootNode)
-
-            'Create a new <Category> element and add it to the root node
-
+            '>>> Create subnodes
             Dim accountsNode As XmlNode = XmlDoc.CreateNode(XmlNodeType.Element, "Accounts", Nothing)
             RootNode.AppendChild(accountsNode)
-
-
-            'Create a new <Category> element and add it to the root node
             Dim portfolioPerformanceXmlFileNode As XmlElement = XmlDoc.CreateElement("PortfolioPerformanceXmlFile")
             RootNode.AppendChild(portfolioPerformanceXmlFileNode)
-
-
-            'Save to the XML file
+            '>>> Save to the XML file
             XmlDoc.Save("Settings.xml")
-
+            '>>> Update GVs
             GV.SettingsXmlPath = My.Application.Info.DirectoryPath & "\Settings.xml"
-
             GV.SettingsXml.Load(GV.SettingsXmlPath)
-
-
-
-
-
         End If
     End Sub
 #End Region
@@ -160,6 +139,7 @@ Public Class MainWindow
             End If
         Else
             Me.LabelNoAccount.Visible = True
+            Me.LabelNoAccount.BringToFront()
             Me.Height = 236
         End If
         '>>> Initialize controls and add controls to main window
