@@ -18,19 +18,6 @@ Public Class MainWindow
         Me.StripStatusLabelVersion.Text = "v" & ProductVersion
         Me.PathToXml.Width = Me.StatusStrip1.Width - Me.StripStatusLabelVersion.Width - 2
     End Sub
-
-
-
-    Private Sub btnDonate_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
-        Dim url As String = ""
-        Dim business As String = "ppi@lars-kempa.de"
-        Dim description As String = "PPI"
-        Dim country As String = "DE"
-        Dim currency As String = "EUR"
-        url += "https://www.paypal.com/cgi-bin/webscr" & "?cmd=" & "_donations" & "&business=" & business & "&lc=" & country & "&item_name=" & description & "&currency_code=" & currency & "&bn=" & "PP%2dDonationsBF"
-        System.Diagnostics.Process.Start(url)
-    End Sub
-
 #End Region
 
 #End Region
@@ -83,7 +70,7 @@ Public Class MainWindow
     End Sub
 #End Region
 
-#Region " Private Sub ButtonFairrCSV_Click () "
+#Region " Private Sub ButtonFairrCSV_Click "
     Private Sub ButtonFairrCSV_Click(sender As Object, e As EventArgs) Handles ButtonFairrCSV.Click
         '>>> Open XLS File
         Dim tmpOpen As New OpenFileDialog
@@ -92,6 +79,18 @@ Public Class MainWindow
             Dim tmpFairr As New Fairr(tmpOpen.FileName)
             tmpFairr.Process()
         End If
+    End Sub
+#End Region
+
+#Region " Private Sub PictureBoxDonate_Click "
+    Private Sub PictureBoxDonate_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles PictureBoxDonate.Click
+        Dim url As String = ""
+        Dim business As String = "ppi@lars-kempa.de"
+        Dim description As String = "PPI"
+        Dim country As String = "DE"
+        Dim currency As String = "EUR"
+        url += "https://www.paypal.com/cgi-bin/webscr" & "?cmd=" & "_donations" & "&business=" & business & "&lc=" & country & "&item_name=" & description & "&currency_code=" & currency & "&bn=" & "PP%2dDonationsBF"
+        System.Diagnostics.Process.Start(url)
     End Sub
 #End Region
 

@@ -36,7 +36,7 @@ Public Class Viainvest
 
 #Region " Private Sub ReadFile "
     Private Sub ReadFile() Implements IP2pProcessor.ReadFile
-        Me.ImportDT = Fkt.ReadXlsToDatatable(Me.FilePath, "Worksheet$")
+        Me.ImportDT = Fkt.ReadXlsxToDatatable(Me.FilePath)
     End Sub
 #End Region
 

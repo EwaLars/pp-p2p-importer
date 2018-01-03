@@ -34,11 +34,11 @@ Partial Class MainWindow
         Me.ButtonFairrCSV = New System.Windows.Forms.ToolStripButton()
         Me.ButtonSettings = New System.Windows.Forms.ToolStripButton()
         Me.ButtonExit = New System.Windows.Forms.ToolStripButton()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureBoxDonate = New System.Windows.Forms.PictureBox()
         Me.StatusStrip1.SuspendLayout()
         Me.MainPanel.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBoxDonate, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ButtonProcess
@@ -163,23 +163,23 @@ Partial Class MainWindow
         '
         'PictureBox1
         '
-        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PictureBox1.Image = Global.Base.My.Resources.Resources.btn_donate_SM
-        Me.PictureBox1.Location = New System.Drawing.Point(454, 0)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(87, 40)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
-        Me.PictureBox1.TabIndex = 5
-        Me.PictureBox1.TabStop = False
+        Me.PictureBoxDonate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBoxDonate.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBoxDonate.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.PictureBoxDonate.Image = Global.Base.My.Resources.Resources.btn_donate_SM
+        Me.PictureBoxDonate.Location = New System.Drawing.Point(454, 0)
+        Me.PictureBoxDonate.Name = "PictureBox1"
+        Me.PictureBoxDonate.Size = New System.Drawing.Size(87, 40)
+        Me.PictureBoxDonate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.PictureBoxDonate.TabIndex = 5
+        Me.PictureBoxDonate.TabStop = False
         '
         'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(541, 202)
-        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.PictureBoxDonate)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.MainPanel)
         Me.Controls.Add(Me.StatusStrip1)
@@ -195,7 +195,7 @@ Partial Class MainWindow
         Me.MainPanel.ResumeLayout(False)
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBoxDonate, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -212,5 +212,5 @@ Partial Class MainWindow
     Friend WithEvents ButtonSettings As ToolStripButton
     Friend WithEvents ButtonExit As ToolStripButton
     Friend WithEvents StripStatusLabelVersion As ToolStripStatusLabel
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBoxDonate As PictureBox
 End Class
