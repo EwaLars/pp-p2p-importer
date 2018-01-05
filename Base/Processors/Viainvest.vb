@@ -36,7 +36,7 @@ Public Class Viainvest
 
 #Region " Private Sub ReadFile "
     Private Sub ReadFile() Implements IP2pProcessor.ReadFile
-        Me.ImportDT = Fkt.ReadXlsxToDatatable(Me.FilePath)
+        Me.ImportDT = Fkt.ReadXlsToDatatable(Me.FilePath, "Transactions$")
     End Sub
 #End Region
 
@@ -58,18 +58,18 @@ Public Class Viainvest
             Next
         End If
         For Each row As DataRow In Me.ImportDT.Rows
-            Dim description As String = row(1).ToString.Trim
+            Dim description As String = row(2).ToString.Trim
             Dim transferDate As Date
-            Dim testdate As String = row(0).ToString
+            Dim testdate As String = row(1).ToString
             If Date.TryParseExact(testdate, "MM/dd/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, transferDate) = False Then
                 Continue For
             End If
             Dim currency As String = "EUR"
             Dim amount As Decimal
-            If Decimal.TryParse(row(4).ToString, amount) = False Then
+            If Decimal.TryParse(row(5).ToString, amount) = False Then
                 amount = 0
             End If
-            Dim loanID As String = row(3).ToString
+            Dim loanID As String = row(4).ToString
             Dim noteHash As Long
             If Me.ViainvestDIC.Keys.Contains(description) Then
                 noteHash = Fkt.CreateNoteHash(transferDate, currency, amount, Me.ViainvestDIC(description),, loanID)

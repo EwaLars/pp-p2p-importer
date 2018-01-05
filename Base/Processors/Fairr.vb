@@ -37,6 +37,31 @@ Public Class Fairr
         WknDIC.Add("Kauf Dimensional Global Targeted Value F", "A0RMKW")
         WknDIC.Add("Kauf Dimensional Global Core Equity Fund", "A0RMKV")
         WknDIC.Add("Kauf Dimensional World Equity Fund EUR", "A1JUY0")
+
+        WknDIC.Add("Kauf DBXT.PTF TOT.RET.U.ETF 1C", "DBX0BT")
+        WknDIC.Add("Kauf CS.-STX.EU.600 NR U.ETF I", "ETF060")
+        WknDIC.Add("Kauf DEKA MDAX", "ETFL44")
+        WknDIC.Add("Kauf DIM.FDS-WORLD EQ.EOACC", "A1JUY0")
+        WknDIC.Add("Kauf D.FDS-GL SHT FIX.I.EOA", "A0YAPN")
+        WknDIC.Add("Kauf DIMENSIONAL-E.MKTS VA.EOA", "A0YAPZ")
+        WknDIC.Add("Kauf DIM.FDS-EUROP.S.COS EUR D", "A1JH97")
+        WknDIC.Add("Kauf D.FDS-EURO.VALUE EUR ACC.", "A0YAN6")
+        WknDIC.Add("Kauf D.FDS-GL.TAR.VAL.EUR ACC.", "A0RMKW")
+        WknDIC.Add("Kauf DIM.FDS-GL.CO.EQ.EUR ACC", "A0RMKV")
+
+        WknDIC.Add("Saldenausgleich DBXT.PTF TOT.RET.U.ETF 1C", "DBX0BT")
+        WknDIC.Add("Saldenausgleich DEKA MDAX", "ETFL44")
+        WknDIC.Add("Saldenausgleich D.FDS-GL.TAR.VAL.EUR ACC.", "A0RMKW")
+        WknDIC.Add("Saldenausgleich DIM.FDS-WORLD EQ.EOACC", "A1JUY0")
+        WknDIC.Add("Saldenausgleich D.FDS-GL SHT FIX.I.EOA", "A0YAPN")
+        WknDIC.Add("Saldenausgleich DIMENSIONAL-E.MKTS VA.EOA", "A0YAPZ")
+        WknDIC.Add("Saldenausgleich DIM.FDS-EUROP.S.COS EUR D", "A1JH97")
+        WknDIC.Add("Saldenausgleich D.FDS-EURO.VALUE EUR ACC.", "A0YAN6")
+        WknDIC.Add("Saldenausgleich DIM.FDS-GL.CO.EQ.EUR ACC", "A0RMKV")
+        WknDIC.Add("Saldenausgleich CS.-STX.EU.600 NR U.ETF I", "ETF060")
+
+
+
     End Sub
 #End Region
 
@@ -62,7 +87,7 @@ Public Class Fairr
             csvOutputFile.WriteLine("Datum;Wert;WKN;Buchungswährung;Stück")
             For Each row As DataRow In Me.ImportDT.Rows
                 If Me.WknDIC.Keys.Contains(row(3).ToString) Then
-                    If CDate(row(0)) > requestDateLimitation.DateTimePicker.Value Then
+                    If CDate(row(1)) > requestDateLimitation.DateTimePicker.Value Then
                         csvOutputFile.WriteLine(row(1).ToString & ";" &
                                                                     row(2).ToString & ";" &
                                                                     Me.WknDIC(row(3).ToString) & ";" &
