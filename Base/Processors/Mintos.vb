@@ -15,7 +15,8 @@ Public Class Mintos
     Private FilePath As String
     Private AccountName As String
     Private MintosDIC As New Dictionary(Of String, TransactionType)
-    Private Const InterestString As String = "Interest income Loan ID"
+    Private Const InterestString As String = "interest"
+    'Private Const InterestString As String = "Interest income Loan ID"
 #End Region
 
 #Region " Contructor "
@@ -31,6 +32,7 @@ Public Class Mintos
     Private Sub BuildMintosDIC()
         MintosDIC.Add("Incoming client payment", TransactionType.DEPOSIT)
         MintosDIC.Add("Affiliate bonus", TransactionType.DEPOSIT)
+        'MintosDIC.Add("Interest income Loan ID", TransactionType.INTEREST)
     End Sub
 #End Region
 
@@ -63,12 +65,13 @@ Public Class Mintos
             Dim amount As Decimal = CDec(row(3))
             Dim balance As Decimal = CDec(row(4))
             Dim noteHash As Long
-            If description.Contains(InterestString) Then
+            If description.ToLower.Contains(InterestString) Then
                 noteHash = Fkt.CreateNoteHash(transferDate, currency, amount, TransactionType.INTEREST, balance)
                 If hashLIS.Contains(noteHash) = False Then
                     Fkt.InsertTransaction(accountNode, transferDate, currency, amount, TransactionType.INTEREST, noteHash)
                 End If
             ElseIf Me.MintosDIC.Keys.Contains(description) Then
+                'If Me.MintosDIC.Keys.Contains(description) Then
                 noteHash = Fkt.CreateNoteHash(transferDate, currency, amount, Me.MintosDIC(description), balance)
                 If hashLIS.Contains(noteHash) = False Then
                     Fkt.InsertTransaction(accountNode, transferDate, currency, amount, Me.MintosDIC(description), noteHash)

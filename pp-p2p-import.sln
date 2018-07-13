@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Base", "Base\Base.vbproj", "{8E5F95E9-6CF8-42DB-A1D5-34D67D45DE97}"
 EndProject
-Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "Setup", "Setup\Setup.isproj", "{4ADB34CE-6DA4-4720-A859-5D5254D8FBF5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -26,16 +24,6 @@ Global
 		{8E5F95E9-6CF8-42DB-A1D5-34D67D45DE97}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8E5F95E9-6CF8-42DB-A1D5-34D67D45DE97}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{8E5F95E9-6CF8-42DB-A1D5-34D67D45DE97}.SingleImage|Any CPU.Build.0 = Release|Any CPU
-		{4ADB34CE-6DA4-4720-A859-5D5254D8FBF5}.CD_ROM|Any CPU.ActiveCfg = CD_ROM
-		{4ADB34CE-6DA4-4720-A859-5D5254D8FBF5}.CD_ROM|Any CPU.Build.0 = CD_ROM
-		{4ADB34CE-6DA4-4720-A859-5D5254D8FBF5}.Debug|Any CPU.ActiveCfg = DVD-5
-		{4ADB34CE-6DA4-4720-A859-5D5254D8FBF5}.Debug|Any CPU.Build.0 = DVD-5
-		{4ADB34CE-6DA4-4720-A859-5D5254D8FBF5}.DVD-5|Any CPU.ActiveCfg = DVD-5
-		{4ADB34CE-6DA4-4720-A859-5D5254D8FBF5}.DVD-5|Any CPU.Build.0 = DVD-5
-		{4ADB34CE-6DA4-4720-A859-5D5254D8FBF5}.Release|Any CPU.ActiveCfg = SingleImage
-		{4ADB34CE-6DA4-4720-A859-5D5254D8FBF5}.Release|Any CPU.Build.0 = SingleImage
-		{4ADB34CE-6DA4-4720-A859-5D5254D8FBF5}.SingleImage|Any CPU.ActiveCfg = SingleImage
-		{4ADB34CE-6DA4-4720-A859-5D5254D8FBF5}.SingleImage|Any CPU.Build.0 = SingleImage
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
