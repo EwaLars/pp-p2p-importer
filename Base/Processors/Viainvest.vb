@@ -66,7 +66,7 @@ Public Class Viainvest
             End If
             Dim currency As String = "EUR"
             Dim amount As Decimal
-            If Decimal.TryParse(row(5).ToString, amount) = False Then
+            If Decimal.TryParse(row(6).ToString, amount) = False Then
                 amount = 0
             End If
             Dim loanID As String = row(4).ToString
