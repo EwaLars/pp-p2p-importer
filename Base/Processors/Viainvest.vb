@@ -66,6 +66,7 @@ Public Class Viainvest
             End If
             Dim currency As String = "EUR"
             Dim amount As Decimal
+            '>>> Prüfen ob Decimal Zahl vorhanden
             If Decimal.TryParse(row(6).ToString, amount) = False Then
                 amount = 0
             End If
