@@ -4,10 +4,14 @@ Public Class Fkt_Test
 
 
 
-    <Fact>
-    Public Sub Fkt_UpperCaseFirstLetter()
-        Dim expected As String = "Welt"
-        Dim input As String = "welt"
+    <Theory>
+    <InlineData("welt", "Welt")>
+    <InlineData("WELT", "WELT")>
+    <InlineData("", "")>
+    <InlineData("a", "A")>
+    <InlineData(Nothing, Nothing)>
+    Public Sub Fkt_UpperCaseFirstLetter(Input As String, Expected As String)
+
 
         Dim result = Fkt.UppercaseFirstLetter(input)
 
