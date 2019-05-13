@@ -9,14 +9,13 @@ Public Class Fkt_Test
     <InlineData("WELT", "WELT")>
     <InlineData("", "")>
     <InlineData("a", "A")>
-    <InlineData("A", "A")>
     <InlineData(Nothing, Nothing)>
     Public Sub Fkt_UpperCaseFirstLetter(Input As String, Expected As String)
 
 
-        Dim result = Fkt.UppercaseFirstLetter(input)
+        Dim result = Fkt.UppercaseFirstLetter(Input)
 
-        Assert.Equal(expected, result)
+        Assert.Equal(Expected, result)
     End Sub
 
 End Class
