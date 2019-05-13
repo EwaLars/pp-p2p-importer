@@ -14,5 +14,4 @@ Public Class Fkt_Test
         Dim result = Fkt.UppercaseFirstLetter(Input)
         Assert.Equal(Expected, result)
     End Sub
-
 End Class
