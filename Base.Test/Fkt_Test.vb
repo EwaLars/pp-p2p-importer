@@ -9,6 +9,7 @@ Public Class Fkt_Test
     <InlineData("WELT", "WELT")>
     <InlineData("", "")>
     <InlineData("a", "A")>
+    <InlineData("A", "A")>
     <InlineData(Nothing, Nothing)>
     Public Sub Fkt_UpperCaseFirstLetter(Input As String, Expected As String)
 
