@@ -68,6 +68,7 @@ Public Class Fkt
                     For Each cell As IXLCell In row.Cells()
                         dt.Columns.Add(cell.Value.ToString())
                     Next
+                    'Unset first row flag
                     firstRow = False
                 Else
                     'Add rows to DataTable.
