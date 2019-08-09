@@ -8,6 +8,7 @@ Public Class Fkt_Test
     <InlineData("welt", "Welt")>
     <InlineData("WELT", "WELT")>
     <InlineData("WELT", "wELT")>
+    <InlineData("WELT", "welt")>
     <InlineData("", "")>
     <InlineData("a", "A")>
     <InlineData("b", "B")>
