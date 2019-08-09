@@ -71,7 +71,7 @@ Public Class Fkt
                     firstRow = False
 
 
-
+                    Dim Welt As Stri
                 Else
                     'Add rows to DataTable.
                     dt.Rows.Add()
