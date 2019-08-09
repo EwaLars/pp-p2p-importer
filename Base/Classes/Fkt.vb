@@ -69,9 +69,6 @@ Public Class Fkt
                         dt.Columns.Add(cell.Value.ToString())
                     Next
                     firstRow = False
-
-
-                    Dim Welt As Stri
                 Else
                     'Add rows to DataTable.
                     dt.Rows.Add()
