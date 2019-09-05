@@ -3,6 +3,9 @@ on:
   push:
     branches:
     - master
+    
+    
+    jobs:
     name: Starte Windows
     runs-on: windows-latest
     
