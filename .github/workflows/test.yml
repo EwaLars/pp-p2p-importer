@@ -10,5 +10,6 @@ on:
 
       steps:
         - uses: actions/checkout@v1      
-        - run:
-          MSBuild.exe GITHUB_WORKSPACE\pp-p2p-import.sln
+        - name: Display the path
+          run: MSBuild.exe "GITHUB_WORKSPACE\pp-p2p-import.sln"
+          shell: cmd
