@@ -1,1 +1,14 @@
 
+on:
+  push:
+    branches:
+    - master
+    name: Starte Windows
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    
+    - name: Start Build
+    run:
+      MSBuild.exe GITHUB_WORKSPACE\pp-p2p-import.sln
