@@ -7,7 +7,6 @@ on:
       build:
       name: Starte Windows
       runs-on: windows-latest
-
       steps:
         - uses: actions/checkout@v1      
         - name: Display the path
