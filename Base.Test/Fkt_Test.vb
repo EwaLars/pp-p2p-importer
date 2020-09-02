@@ -2,8 +2,6 @@
 
 Public Class Fkt_Test
 
-
-
     <Theory>
     <InlineData("welt", "Welt")>
     <InlineData("WELT", "WELT")>
